@@ -7,7 +7,7 @@ mongoose.connect(uri, {
 })
 
 // model struktur database
-const Medicine = mongoose.model('medicine', {
+const Medicine = mongoose.model('Medicine', {
     name: { type: String },
     manufacturer: { type: String },
     description: { type: String },

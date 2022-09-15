@@ -24,6 +24,12 @@ app.get('/tambah-obat', async (req, res) => {
     res.render('tambah-obat')
 })
 
+app.post('/tambah-obat', async (req, res) => {
+    req.body.log = []
+    console.log(req.body)
+    await Medicine.insertMany(req.body)
+    res.redirect('/')
+})
 
 app.listen(PORT, () => {
     console.log('listening to port ' + PORT)
