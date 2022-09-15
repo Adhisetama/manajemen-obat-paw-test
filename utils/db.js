@@ -15,16 +15,9 @@ const Medicine = mongoose.model('Medicine', {
     log: { type: Array, default: [] }
 })
 
-// class MedicineLog {
-//     MedicineLog(stock_io, description="", date=new Date().toLocaleString()) {
-//         this.stock_io = stock_io
-//         this.date = date
-//         this.description = description
-//     }
-// }
-
+const logEnum = {STOCK:0, DESC:1, DATE:2} // enumerasi akses array log
 const medicineLog = (stock_io, description="", date=new Date().toLocaleString()) => {
     return [stock_io, description, date]
 }
 
-module.exports = { Medicine, medicineLog }
+module.exports = { Medicine, medicineLog, logEnum }

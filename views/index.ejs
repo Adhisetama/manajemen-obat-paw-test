@@ -7,6 +7,9 @@
     <title>Data Obat</title>
 </head>
 <body>
+    <nav>
+        <a href="/">Apotek PAW</a>
+    </nav>
     <h1>Data Obat Apotek</h1>
     <table>
         <% for( let i = 0; i < medicines.length; i++ ) { %>
@@ -14,12 +17,11 @@
                 <td><%= i+1 %></td>
                 <td><%= medicines[i].name %></td>
                 <td>
-                    <a href="/<%= medicines[i]._id %>">Detail</a>
+                    <a href="/info/<%= medicines[i]._id %>">Detail</a>
                     <a href="/transaction/<%= medicines[i]._id %>">Transaksi</a>
                     <a href="/edit/<%= medicines[i]._id %>">Edit</a>
                     <a href="/delete/<%= medicines[i]._id %>">Hapus</a>
                 </td>
-
             </tr>
         <% } %>
     </table>
