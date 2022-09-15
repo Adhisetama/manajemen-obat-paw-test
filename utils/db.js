@@ -10,17 +10,21 @@ mongoose.connect(uri, {
 const Medicine = mongoose.model('Medicine', {
     name: { type: String },
     manufacturer: { type: String },
-    description: { type: String },
+    description: { type: String, default: "" },
     stock: { type: Number },
-    log: { type: Array }
+    log: { type: Array, default: [] }
 })
 
-class MedicineLog {
-    MedicineLog(stock_io, date=new Date().toLocaleString(), description="") {
-        this.stock_io = stock_io
-        this.date = date
-        this.description = description
-    }
+// class MedicineLog {
+//     MedicineLog(stock_io, description="", date=new Date().toLocaleString()) {
+//         this.stock_io = stock_io
+//         this.date = date
+//         this.description = description
+//     }
+// }
+
+const medicineLog = (stock_io, description="", date=new Date().toLocaleString()) => {
+    return [stock_io, description, date]
 }
 
-module.exports = { Medicine, MedicineLog }
+module.exports = { Medicine, medicineLog }
