@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data Obat</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/tambah-obat" method="post">
+            <label for="name">nama obat:</label>
+            <input type="text" name="name" id="name" required>
+            <br>
+            <label for="manufacturer">pemanufaktur:</label>
+            <input type="text" name="manufacturer" id="manufacturer">
+            <br>
+            <label for="stock">stok tersedia:</label>
+            <input type="number" name="stock" id="stock" min="0">
+            <br>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</body>
+</html>
