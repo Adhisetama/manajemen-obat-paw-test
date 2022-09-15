@@ -72,6 +72,38 @@ app.post('/edit', async (req, res) => {
     }
 })
 
+// edit data transaksi obat
+app.get('/transaction/:id', async (req, res) => {
+    const medicine = await Medicine.findOne({_id: ObjectId(req.params.id)})
+    if (medicine) {
+        res.render('transaction', {
+            medicine
+        })
+    }
+})
+app.post('/transaction', async (req, res) => {
+    console.log(req.body)
+    const medicine = await Medicine.findOne({_id: ObjectId(req.body._id)})
+    if (medicine) {
+        const newLog = medicine.log
+        newLog.push(medicineLog(
+            req.body.stock, req.body.description
+        ))
+        console.log(newLog)
+        const newStock = medicine.stock + parseInt(req.body.stock)
+        await Medicine.updateOne(
+            {_id: ObjectId(req.body._id)},
+            {
+                $set: {
+                    log: newLog,
+                    stock: newStock
+                }
+            }
+        )
+        res.redirect('/') // nanti ganti jadi '/description'
+    }
+})
+
 app.listen(PORT, () => {
     console.log('listening to port ' + PORT)
 })

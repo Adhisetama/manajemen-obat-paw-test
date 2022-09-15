@@ -7,9 +7,11 @@
     <title>Data Obat</title>
 </head>
 <body>
+    <h1>Data Obat Apotek</h1>
     <table>
         <% for( let i = 0; i < medicines.length; i++ ) { %>
             <tr>
+                <td><%= i+1 %></td>
                 <td><%= medicines[i].name %></td>
                 <td>
                     <a href="/<%= medicines[i]._id %>">Detail</a>
@@ -21,6 +23,7 @@
             </tr>
         <% } %>
     </table>
+    <hr>
     <a href="/add">Tambah Obat</a>
 </body>
 </html>
