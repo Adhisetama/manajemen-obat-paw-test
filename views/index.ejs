@@ -11,6 +11,25 @@
         <a href="/">Apotek PAW</a>
     </nav>
     <h1>Data Obat Apotek</h1>
+    <form action="/" method="post">
+        <input type="text" name="search" id="search" value="<%= search %>" placeholder="search">
+        <input type="submit" value="submit">
+        <ul>
+            <label for="sortby">sort by:</label>
+            <li>
+                <span>date</span>
+                <input type="radio" name="sortby" value="date" <%= sortby=="date" ? "checked" : "" %>>
+            </li>
+            <li>
+                <span>A-Z</span>
+                <input type="radio" name="sortby" value="A-Z" <%= sortby=="A-Z" ? "checked" : "" %>>
+            </li>
+            <li>
+                <span>Z-A</span>
+                <input type="radio" name="sortby" value="Z-A"   <%= sortby=="Z-A" ? "checked" : "" %>>
+            </li>
+        </ul>
+    </form>
     <table>
         <% for( let i = 0; i < medicines.length; i++ ) { %>
             <tr>

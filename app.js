@@ -16,7 +16,38 @@ const { ObjectId } = require('mongodb')
 app.get('/', async (req, res) => {
     const medicines = await Medicine.find() 
     res.render('index', {
-        medicines
+        medicines,
+        sortby: "date",
+        search: ''
+    })
+})
+
+// halaman index: search bar
+app.post('/', async (req, res) => {
+    const medicines = await Medicine.find(
+        {
+            name: new RegExp(req.body.search, 'i')
+        }
+    )
+    switch (req.body.sortby) {
+        case "date": break
+        case "A-Z" :
+            medicines.sort((a,b) => {
+                [ x, y ] = [ a.name.toLowerCase(), b.name.toLowerCase() ]
+                return (x > y) ? 1 : ((y > x) ? -1 : 0)
+            })
+            break
+        case "Z-A" :
+            medicines.sort((a,b) => {
+                [ x, y ] = [ a.name.toLowerCase(), b.name.toLowerCase() ]
+                return (x < y) ? 1 : ((y < x) ? -1 : 0)
+            })
+            break
+    }
+    res.render('index', {
+        medicines,
+        sortby: req.body.sortby,
+        search: req.body.search
     })
 })
 
